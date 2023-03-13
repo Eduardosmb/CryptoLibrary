@@ -17,7 +17,7 @@ Para utilizar o programa, basta seguir os passos abaixo:
 4. Para facilitar, basta instalar os requirements.txt, que contém todas as bibliotecas necessárias para o funcionamento do programa.
 ```pip install -r requirements.txt```
 
-Após instalar as bibliotecas, basta olhar o arquivo main.py e verificar o funcionamento de cada uma, que já apresenta um exemplo para pronta utilização.
+Após instalar as bibliotecas, basta olhar o arquivo main.py e verificar o funcionamento de cada uma, que já apresenta um exemplo pronta para utilização.
 
 ## Funções:
 
