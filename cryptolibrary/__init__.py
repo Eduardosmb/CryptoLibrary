@@ -1,7 +1,7 @@
 import numpy as np
 
 def para_one_hot(palavra):
-    alfabeto = 'abcdefghijklmnopqrstuvwxyz '
+    alfabeto = 'abcdefghijklmnopqrstuvwxyz!@#$%^&*()[}{];:",.<>/?\| '
     matriz = np.zeros((len(alfabeto), len(palavra)))
     palavra = palavra.lower()
     for i in range(len(palavra)):
@@ -11,7 +11,7 @@ def para_one_hot(palavra):
     return matriz
 
 def para_string(matriz):
-    alfabeto = 'abcdefghijklmnopqrstuvwxyz '
+    alfabeto = 'abcdefghijklmnopqrstuvwxyz!@#$%^&*()[}{];:",.<>/?\| '
     palavra = ''
     for i in range(matriz.shape[1]):
         indice = np.argmax(matriz[:, i])
@@ -26,7 +26,7 @@ def cifrar(mensagem, P):
 
 def de_cifrar(mensagem, P):
     matriz = para_one_hot(mensagem)
-    C = np.dot(P, matriz)
+    C = np.dot(np.linalg.inv(P),matriz)
     return para_string(C)
 
 def enigma(mensagem, P, E):
@@ -48,20 +48,13 @@ def de_enigma(mensagem, P, E):
     resposta = ''
     for letra in mensagem:
         if indice == 0:
-            letra_cifrada = cifrar(letra, P)
-            letra_cifrada = para_one_hot(letra_cifrada)
-            matriz_cifrada = np.dot(np.linalg.inv(P),letra_cifrada)
-            resposta += para_string(matriz_cifrada)
+            letra = de_cifrar(letra, P)
+            resposta += letra
         else:
-            letra_nova = cifrar(letra, P)
-            letra_nova = para_one_hot(letra_nova)
-            matriz_cifrada = np.dot(np.linalg.inv(P),letra_nova)
             for u in range(indice):
-                letra_nova = para_string(letra_nova)
-                letra_nova = cifrar(letra_nova,E)
-                letra_cifrada = para_one_hot(letra_cifrada)
-            matriz_cifrada = np.dot(np.linalg.inv(E),letra_cifrada)
-            resposta += para_string(matriz_cifrada)
+                letra = de_cifrar(letra,E)
+            letra = de_cifrar(letra, P)
+            resposta += letra
         indice += 1
     return resposta
 
