@@ -6,7 +6,7 @@ A biblioteca Cryptolibrary, é um modo criado por nós que permite criptografar 
 
 Para utilizar o programa, basta seguir os passos abaixo:
 
-1.Instale o Python 3.8 ou superior;
+1. Instale o Python 3.8 ou superior;
 
 2. Instale a biblioteca Numpy;
 ```pip install numpy```
