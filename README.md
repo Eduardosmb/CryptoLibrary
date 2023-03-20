@@ -19,6 +19,23 @@ Para utilizar o programa, basta seguir os passos abaixo:
 
 Após instalar as bibliotecas, basta olhar o arquivo main.py e verificar o funcionamento de cada uma, que já apresenta um exemplo pronta para utilização.
 
+## Como Funciona:
+   Cripotagrafar:
+   
+      1. Primeiramente é tranformado a palavra desejada para o metodo one hot, ou seja, a palavra deseja passa aser representada por uma matriz onde cada linha representa uma letra e cada a posição
+      
+      2. Logo após isso, pegamos a matriz que representa a palavra e multiplicamos por uma nova matriz de permutação que chamamos de "P". Desse modo, as linhas e colunas serão embaralhadas de modo que a nova matriz passe a não corresponder precisamente a ordem original.
+      
+      3. Por fim, para que nossa criptografia de fato vire um enigma com um bom grau de dificuldade, utilizamos uma segunda matriz de permutação que chamamos de "E". A matematica por tras é bem simples: multiplicamos a primeira letra(em formato one hot) pela  matriz P, a segunda pela matriz PE, a terceira por PEE, até obtermos todas as letras permutadas(sempre multiplicando um E a mais a cada letra nova).
+   
+   Decriptografar:
+   
+      1. Primeiramente é tranformado a palavra desejada para o metodo one hot, ou seja, a palavra deseja passa aser representada por uma matriz onde cada linha representa uma letra e cada a posição
+      
+      2. Logo após isso, pegamos a matriz que representa a palavra e multiplicamos pela inversa de uma nova matriz de permutação que chamamos de "P". Desse modo, as linhas e colunas serão embaralhadas de modo que a nova matriz passe a não corresponder precisamente a ordem original.
+      
+      3.  Por fim, para que nossa criptografia de fato vire um enigma com um bom grau de dificuldade, utilizamos uma segunda matriz de permutação que chamamos de "E". A matematica por tras é bem simples: multiplicamos a primeira letra(em formato one hot) pela inversa da matriz P, a segunda pela matriz P^-1E^-1, a terceira por P^-1E^-1E^-1, até obtermos todas as letras permutadas(sempre multiplicando um E^-1 a mais a cada letra nova).
+
 ## Funções:
 
 ### Função para_one_hot(mensagem):
