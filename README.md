@@ -22,19 +22,43 @@ Após instalar as bibliotecas, basta olhar o arquivo main.py e verificar o funci
 ## Como Funciona:
    Cripotagrafar:
    
-      1. Primeiramente é tranformada a palavra desejada para o metodo one hot, ou seja, a palavra desejada passa a ser representada por uma matriz onde cada linha representa uma letra.
+      1. Primeiramente é tranformada a palavra desejada para o metodo one hot, ou seja, a palavra desejada passa a ser representada por uma matriz onde cada linha representa uma letra e cada coluna uma posição. 
+      Ou seja:
       
-      2. Logo após, pegamos a matriz que representa a palavra e multiplicamos por uma nova matriz de permutação que chamamos de "P". Desse modo, as linhas e colunas serão embaralhadas fazendo com que a nova matriz passe a não corresponder precisamente a ordem original.
+                  M(i,j) = []
+                  onde i = letra, j = posição
       
-      3. Por fim, para que nossa criptografia de fato vire um enigma com um bom grau de dificuldade, utilizamos uma segunda matriz de permutação que chamamos de "E". A matematica por trás é bem simples: multiplicamos a primeira letra (em formato one hot) pela  matriz "P", a segunda pela matriz "PE" e  a terceira por "PEE", tendo como objetivo obter todas as letras permutadas (sempre multiplicando um E a mais para cada letra nova).
+      2. Logo após, multplicamos a matriz M por uma matriz "P", que nada mais é do que a permutação da matriz identidade. Isso com a finalidade de embaralhar as linhas e colunas da matriz original:
+                  
+                  PM
+      
+      3. Por fim, para que nossa criptografia de fato vire um enigma com um bom grau de dificuldade, utilizamos uma segunda matriz "E" (uma outra permutação da matriz identidade):
+      
+                  (E^n)PM
+                  onde n corresponde a j.
+                  
+       
+       Dessa forma, acabamos por criptografar nossa palavra inicial.
    
    Decriptografar:
    
-      1. Primeiramente é tranformada a palavra desejada para o método one hot, ou seja, a palavra desejada passa a ser representada por uma matriz onde cada linha representa uma letra.
+      1. Primeiramente é tranformada a palavra desejada para o metodo one hot, ou seja, a palavra desejada passa a ser representada por uma matriz onde cada linha representa uma letra e cada coluna uma posição. 
+      Ou seja:
       
-      2. Logo após isso, pegamos a matriz que representa a palavra e multiplicamos pela inversa de uma nova matriz de permutação que chamamos de "P". Desse modo, as linhas e colunas serão embaralhadas de modo que a nova matriz passe a não corresponder precisamente a ordem original.
+                  M(i,j) = []
+                  onde i = letra, j = posição
       
-      3.  Por fim, para que nossa criptografia de fato vire um enigma com um bom grau de dificuldade, utilizamos uma segunda matriz de permutação que chamamos de "E". A matemática por tras é bem simples: multiplicamos a primeira letra (em formato one hot) pela inversa da matriz "P", a segunda pela matriz "P^-1E^-1", a terceira por "P^-1E^-1E^-1", até obtermos todas as letras permutadas (sempre multiplicando um E^-1 a mais para cada letra nova).
+      2. Logo após, multplicamos a matriz M pela inversa da matriz "P", que nada mais é do que a permutação da matriz identidade. Isso com a finalidade de desembaralhar as linhas e colunas da matriz original:
+                  
+                  (P^-1)M
+      
+      3. Por fim, para que nosso enigma seja resolvido, utilizamos uma segunda matriz "E" (uma outra permutação da matriz identidade):
+      
+                  ((E^-1)^n)PM
+                  onde n corresponde a j.
+                  
+       Dessa forma, acabamos por decriptografar nosso enigma, obtendo a mensagem inicial.
+
 
 ## Funções:
 
