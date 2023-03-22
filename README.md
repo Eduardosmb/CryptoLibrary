@@ -22,13 +22,13 @@ Após instalar as bibliotecas, basta olhar o arquivo main.py e verificar o funci
 ## Como Funciona:
    Cripotagrafar:
    
-      1. Primeiramente é tranformada a palavra desejada para o metodo one hot, ou seja, a palavra desejada passa a ser representada por uma matriz onde cada linha representa uma letra e cada coluna uma posição. 
+      1. Primeiramente é transformada a palavra desejada para o metodo one hot, ou seja, a palavra desejada passa a ser representada por uma matriz onde cada linha representa uma letra e cada coluna uma posição. 
       Ou seja:
       
                   M(i,j) = []
                   onde i = letra, j = posição
       
-      2. Logo após, multplicamos a matriz M por uma matriz "P", que nada mais é do que a permutação da matriz identidade. Isso com a finalidade de embaralhar as linhas e colunas da matriz original:
+      2. Logo após, multiplicamos a matriz M por uma matriz "P", que nada mais é do que a permutação da matriz identidade. Isso possui a finalidade de embaralhar as linhas e colunas da matriz original:
                   
                   PM
       
@@ -42,13 +42,13 @@ Após instalar as bibliotecas, basta olhar o arquivo main.py e verificar o funci
    
    Decriptografar:
    
-      1. Primeiramente é tranformada a palavra desejada para o metodo one hot, ou seja, a palavra desejada passa a ser representada por uma matriz onde cada linha representa uma letra e cada coluna uma posição. 
+      1. Primeiramente é transformada a palavra desejada para o metodo one hot, ou seja, a palavra desejada passa a ser representada por uma matriz onde cada linha representa uma letra e cada coluna uma posição. 
       Ou seja:
       
                   M(i,j) = []
                   onde i = letra, j = posição
       
-      2. Logo após, multplicamos a matriz M pela inversa da matriz "P", que nada mais é do que a permutação da matriz identidade. Isso com a finalidade de desembaralhar as linhas e colunas da matriz original:
+      2. Logo após, multiplicamos a matriz M pela inversa da matriz "P", que nada mais é do que a permutação da matriz identidade. Isso com a finalidade de desembaralhar as linhas e colunas da matriz original:
                   
                   (P^-1)M
       
